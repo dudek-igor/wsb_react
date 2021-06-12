@@ -61,11 +61,26 @@ const initialState = [
 ];
 
 const memReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'ADD_TO_DO':
-      return [...state, action.payload];
-    case 'DELETE_TO_DO':
-      return state.filter((todo) => todo.id !== action.payload);
+  const { type, payload } = action;
+  switch (type) {
+    case 'VOTE_MEM':
+      return state.map((mem) => {
+        const { uuid: mem_uuid, upvotes } = mem;
+        const { uuid: payload_uuid } = payload;
+        if (mem_uuid === payload_uuid) {
+          return { ...mem, upvotes: upvotes + 1 };
+        } else return mem;
+      });
+    case 'DOWNVOTE_MEM':
+      return state.map((mem) => {
+        const { uuid: mem_uuid, downvotes } = mem;
+        const { uuid: payload_uuid } = payload;
+        if (mem_uuid === payload_uuid && downvotes > 0) {
+          return { ...mem, downvotes: downvotes - 1 };
+        } else return mem;
+      });
+    case 'ADD_MEM':
+      return [...state, payload];
     default:
       return state;
   }

@@ -10,7 +10,7 @@ import StarIcon from '@material-ui/icons/Star';
 import { useStyles, IconWrapper } from './Card.styled';
 
 const MyCard = ({ data }) => {
-  const { title, mem_image, added_datetime, top, upvotes, downvotes } = data;
+  const { title, mem_image, added_datetime, top } = data;
   const { card, star, media, content, divider } = useStyles();
   return (
     <Card className={card}>

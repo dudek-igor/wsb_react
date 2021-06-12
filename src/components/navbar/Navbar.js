@@ -91,7 +91,7 @@ const Navbar = () => {
             to: href,
             component: RouterLink,
             exact: true,
-            className: [menuButton, active],
+            className: menuButton,
           }}
         >
           <Icon className={icon} /> {label}

@@ -24,6 +24,10 @@ export const useStyles = makeStyles(() => ({
     '@media (min-width: 900px)': {
       marginRight: '32px',
     },
+    '&.active': {
+      // color: '#E3E2DD',
+      color: '#C9C9CC',
+    },
   },
   toolbar: {
     display: 'flex',

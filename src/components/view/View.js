@@ -69,7 +69,6 @@ const View = () => {
   // I. Get & Create Data
   const { pathname } = useLocation();
   const [state, setState] = useState([]);
-  console.log(pathname);
   // II. Filter Fake DB
   const getData = useCallback(
     (data) => {

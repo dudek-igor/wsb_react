@@ -1,7 +1,7 @@
 {
   "name": "wsb_react",
   "version": "0.1.0",
-  "homepage": "https://dudek-igor.github.io/wsb_react",
+  "homepage": "https://dudek-igor.github.io",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",

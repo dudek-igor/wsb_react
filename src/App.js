@@ -4,7 +4,7 @@ import { MainView, Error404 } from 'views';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Navbar />
       <Switch>
         <Route exact path='/' component={MainView} />

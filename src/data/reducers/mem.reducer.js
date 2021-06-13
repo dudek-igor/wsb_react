@@ -40,7 +40,7 @@ const initialState = [
   },
   {
     uuid: '8f973f9e-e3c6-3bb6-999e-f452e7f04d4a',
-    title: 'React',
+    title: 'Programing',
     mem_image:
       'https://www.meme-arsenal.com/memes/d4430e6f3f4df494020c4a7b03b0f259.jpg',
     added_datetime: '2021-06-12T09:36:45.881Z',

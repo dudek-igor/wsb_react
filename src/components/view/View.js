@@ -30,6 +30,7 @@ const View = () => {
   // III. Mount Get Data Func
   useEffect(() => {
     const results = getData(mems_data);
+    console.log(results);
     setState(results);
   }, [getData, mems_data]);
   // IV. Return Main Component

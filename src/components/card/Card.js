@@ -8,9 +8,12 @@ import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';
 import StarIcon from '@material-ui/icons/Star';
 import { useStyles, IconWrapper } from './Card.styled';
+import { useDispatch } from 'react-redux';
+import { AddVote, DownVote } from '../../data/actions/mem.actions';
 
 const MyCard = ({ data }) => {
-  const { title, mem_image, added_datetime, top } = data;
+  const dispatch = useDispatch();
+  const { uuid, title, mem_image, added_datetime, top } = data;
   const { card, star, media, content, divider } = useStyles();
   return (
     <Card className={card}>
@@ -30,10 +33,13 @@ const MyCard = ({ data }) => {
       </CardContent>
       <Divider className={divider} />
       <IconWrapper>
-        <IconButton aria-label='dislike'>
+        <IconButton
+          aria-label='dislike'
+          onClick={() => dispatch(DownVote(uuid))}
+        >
           <ThumbDownOutlinedIcon style={{ color: '#e32524' }} />
         </IconButton>
-        <IconButton aria-label='like'>
+        <IconButton aria-label='like' onClick={() => dispatch(AddVote(uuid))}>
           <ThumbUpOutlinedIcon style={{ color: '#028A0F' }} />
         </IconButton>
       </IconWrapper>

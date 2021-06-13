@@ -8,7 +8,7 @@ import { StyledPaper, useFormStyles } from './AddMem.styled';
 import { useDispatch } from 'react-redux';
 import { AddMem } from 'data/actions/mem.actions.js';
 
-const AddMemForm = () => {
+const AddMemForm = ({ setOpenModal }) => {
   const dispatch = useDispatch();
   const { form, button } = useFormStyles();
   return (
@@ -33,6 +33,7 @@ const AddMemForm = () => {
         })}
         onSubmit={(values) => {
           dispatch(AddMem({ uuid: uuidv4(), ...values }));
+          setOpenModal(false);
         }}
       >
         {({ touched, errors }) => (

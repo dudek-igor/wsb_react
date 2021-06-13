@@ -23,7 +23,7 @@ const AddMem = () => {
         }}
       >
         <Fade in={open}>
-          <AddMemForm />
+          <AddMemForm setOpenModal={setOpen} />
         </Fade>
       </StyledModal>
     </>

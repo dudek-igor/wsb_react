@@ -75,8 +75,8 @@ const memReducer = (state = initialState, action) => {
       return state.map((mem) => {
         const { uuid: mem_uuid, downvotes } = mem;
         const { uuid: payload_uuid } = payload;
-        if (mem_uuid === payload_uuid && downvotes > 0) {
-          return { ...mem, downvotes: downvotes - 1 };
+        if (mem_uuid === payload_uuid) {
+          return { ...mem, downvotes: downvotes + 1 };
         } else return mem;
       });
     case 'ADD_MEM':

@@ -42,7 +42,7 @@ const Navbar = () => {
   const { mobileView, drawerOpen } = state;
   //  -> Set Responsivenes Func
   const setResponsiveness = () => {
-    return window.innerWidth < 768
+    return window.innerWidth < 769
       ? setState((prevState) => ({ ...prevState, mobileView: true }))
       : setState((prevState) => ({ ...prevState, mobileView: false }));
   };

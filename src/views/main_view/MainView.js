@@ -1,10 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import { StyledMain, StyledCard, StyledIconButton } from './MainView.styled';
-import Typography from '@material-ui/core/Typography';
-import { MyCard } from 'components';
+import { StyledMain } from './MainView.styled';
+import { MyCard, AddMem } from 'components';
 
 const MainView = () => {
   // I. Get & Create Data
@@ -37,16 +35,6 @@ const MainView = () => {
   // IV. Return Main Component
   return (
     <StyledMain>
-      {pathname === '/' && (
-        <StyledCard>
-          <StyledIconButton aria-label='add_mem'>
-            <AddCircleOutlineOutlinedIcon />
-          </StyledIconButton>
-          <Typography variant={'h6'} gutterBottom>
-            Add New Mem
-          </Typography>
-        </StyledCard>
-      )}
       {state.map((mem_data) => {
         const { uuid } = mem_data;
         return <MyCard key={uuid} data={mem_data} />;

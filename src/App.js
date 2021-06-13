@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Navbar } from 'components';
+import { Navbar, AddMem } from 'components';
 import { MainView, Error404 } from 'views';
 
 const App = () => {
@@ -12,6 +12,7 @@ const App = () => {
         <Route path='/hot' component={MainView} />
         <Route path='*' component={Error404} />
       </Switch>
+      <AddMem />
     </Router>
   );
 };

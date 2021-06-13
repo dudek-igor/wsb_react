@@ -1,15 +1,16 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Navbar, View } from './components';
+import { Navbar } from 'components';
+import { MainView, Error404 } from 'views';
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path='/' component={View} />
-        <Route path='/regular' component={View} />
-        <Route path='/hot' component={View} />
-        <Route path='*' component={View} />
+        <Route exact path='/' component={MainView} />
+        <Route path='/regular' component={MainView} />
+        <Route path='/hot' component={MainView} />
+        <Route path='*' component={Error404} />
       </Switch>
     </Router>
   );

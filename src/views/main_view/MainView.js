@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { StyledMain } from './View.styled';
-import Card from '../card/Card';
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import { StyledMain, StyledCard, StyledIconButton } from './MainView.styled';
+import Typography from '@material-ui/core/Typography';
+import { MyCard } from 'components';
 
-const View = () => {
+const MainView = () => {
   // I. Get & Create Data
   const { pathname } = useLocation();
   const mems_data = useSelector((state) => state.memReducer);
@@ -30,18 +32,27 @@ const View = () => {
   // III. Mount Get Data Func
   useEffect(() => {
     const results = getData(mems_data);
-    console.log(results);
     setState(results);
   }, [getData, mems_data]);
   // IV. Return Main Component
   return (
     <StyledMain>
+      {pathname === '/' && (
+        <StyledCard>
+          <StyledIconButton aria-label='add_mem'>
+            <AddCircleOutlineOutlinedIcon />
+          </StyledIconButton>
+          <Typography variant={'h6'} gutterBottom>
+            Add New Mem
+          </Typography>
+        </StyledCard>
+      )}
       {state.map((mem_data) => {
         const { uuid } = mem_data;
-        return <Card key={uuid} data={mem_data} />;
+        return <MyCard key={uuid} data={mem_data} />;
       })}
     </StyledMain>
   );
 };
 
-export default View;
+export default MainView;

@@ -9,7 +9,7 @@ import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';
 import StarIcon from '@material-ui/icons/Star';
 import { useStyles, IconWrapper } from './Card.styled';
 import { useDispatch } from 'react-redux';
-import { AddVote, DownVote } from '../../data/actions/mem.actions';
+import { AddVote, DownVote } from 'data/actions/mem.actions.js';
 
 const MyCard = ({ data }) => {
   const dispatch = useDispatch();

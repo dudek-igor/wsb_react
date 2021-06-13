@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StyledMain } from './MainView.styled';
-import { MyCard, AddMem } from 'components';
+import { MyCard } from 'components';
 
 const MainView = () => {
   // I. Get & Create Data

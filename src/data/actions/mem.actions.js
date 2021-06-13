@@ -18,3 +18,15 @@ export const DownVote = (uuid) => (dispatch) => {
 };
 
 // III. Add Mem
+export const AddMem =
+  ({ uuid, title, mem_image }) =>
+  (dispatch) => {
+    dispatch({
+      type: 'ADD_MEM',
+      payload: {
+        uuid,
+        title,
+        mem_image,
+      },
+    });
+  };

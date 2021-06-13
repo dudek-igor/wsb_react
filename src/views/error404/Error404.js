@@ -31,7 +31,7 @@ const Error404 = () => {
       <Loader type='TailSpin' color='#00BFFF' height={80} width={80} />
       <Typography variant={'h5'}>
         Error 404 <br />
-        You will be redirect to home page in {stopWatch} s.
+        You will be redirect to Home Page in {stopWatch} s.
       </Typography>
     </Wrapper>
   );

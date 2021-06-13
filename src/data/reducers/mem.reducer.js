@@ -15,7 +15,7 @@ const initialState = [
     mem_image:
       'https://www.meme-arsenal.com/memes/e3cf12860859b7a69c445defa5887ba0.jpg',
     added_datetime: '2021-05-03T06:54:45.881Z',
-    top: true,
+    top: false,
     upvotes: 0,
     downvotes: 0,
   },
@@ -25,7 +25,7 @@ const initialState = [
     mem_image: 'https://tsh.io/wp-content/uploads/2019/12/react-meme1_.png',
     added_datetime: '2021-06-01T18:01:45.881Z',
     top: true,
-    upvotes: 5,
+    upvotes: 12,
     downvotes: 2,
   },
 
@@ -35,7 +35,7 @@ const initialState = [
     mem_image: 'https://img.devrant.com/devrant/rant/r_123356_Gnftu.jpg',
     added_datetime: '2021-02-09T14:12:45.881Z',
     top: false,
-    upvotes: 8,
+    upvotes: 5,
     downvotes: 2,
   },
   {
@@ -65,22 +65,39 @@ const memReducer = (state = initialState, action) => {
   switch (type) {
     case 'VOTE_MEM':
       return state.map((mem) => {
-        const { uuid: mem_uuid, upvotes } = mem;
+        const { uuid: mem_uuid, upvotes, downvotes } = mem;
         const { uuid: payload_uuid } = payload;
         if (mem_uuid === payload_uuid) {
-          return { ...mem, upvotes: upvotes + 1 };
+          return {
+            ...mem,
+            upvotes: upvotes + 1,
+            top: upvotes + 1 - downvotes >= 10 ? true : false,
+          };
         } else return mem;
       });
     case 'DOWNVOTE_MEM':
       return state.map((mem) => {
-        const { uuid: mem_uuid, downvotes } = mem;
+        const { uuid: mem_uuid, upvotes, downvotes } = mem;
         const { uuid: payload_uuid } = payload;
         if (mem_uuid === payload_uuid) {
-          return { ...mem, downvotes: downvotes + 1 };
+          return {
+            ...mem,
+            downvotes: downvotes + 1,
+            top: upvotes - downvotes - 1 < 10 ? false : true,
+          };
         } else return mem;
       });
     case 'ADD_MEM':
-      return [...state, payload];
+      return [
+        {
+          ...payload,
+          added_datetime: new Date(),
+          top: false,
+          upvotes: 0,
+          downvotes: 0,
+        },
+        ...state,
+      ];
     default:
       return state;
   }
